@@ -11,19 +11,19 @@ async function main(){
   const users = await prisma.user.createMany({ 
     data: [{
         name: "Miguel",
-        email: "mcoria08@gmail.com",
+        email: "abcdef@gmail.com",
         age: 48,           
       },{
         name: "Ángel",
-        email: "jc_mangel@hotmail.com",
+        email: "abcdef@hotmail.com",
         age: 48,           
       },{
         name: "Ángel",
-        email: "angelitocalafia@hotmail.com",
+        email: "xyz@hotmail.com",
         age: 2,           
       },{
         name: "Ángel",
-        email: "angeljban01@hotmail.com",
+        email: "test@hotmail.com",
         age: 15,           
       }]
   });
@@ -37,7 +37,7 @@ async function main(){
   //Find an user
   const getOneUser = await prisma.user.findUnique({
     where: {
-      email: "mcoria08@gmail.com",
+      email: "abcdef@gmail.com",
     }
   });
   console.log(getOneUser);
@@ -84,7 +84,7 @@ async function main(){
   const getWithANDOerator = await prisma.user.findMany({
     where: {
       AND: [
-       { email: { startsWith: 'jc_man' }},
+       { email: { startsWith: 'abc' }},
        { age: { gt: 15} },
        { name: 'Ángel' }
       ]
@@ -96,10 +96,10 @@ async function main(){
   //UPDATE #1
   const getUpdated = await prisma.user.update({
     where: {         
-      email: "jc_mangel@hotmail.com"     
+      email: "abcdef@hotmail.com"     
     },
     data: {
-      email: "mcoria@hotmail.com"
+      email: "testing@hotmail.com"
     }
   });
   console.log(getUpdated);
@@ -108,7 +108,7 @@ async function main(){
   //UPDATE #2
   const getUpdated2 = await prisma.user.update({
     where: {         
-      email: "mcoria@hotmail.com"     
+      email: "testing@hotmail.com"     
     },
     data: {
       age: {
